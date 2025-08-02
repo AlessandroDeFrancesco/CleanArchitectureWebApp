@@ -1,4 +1,4 @@
-# 🧱 Clean Architecture WebApp
+# Clean Architecture WebApp
 
 This project is a **blueprint and showcase** demonstrating how to apply **Clean Architecture** principles in a modern web application using **React** and **Firebase**.  
 It highlights the benefits of strict layer separation, testability, scalability, and long-term maintainability through a practical and working example.
@@ -106,7 +106,7 @@ In the Firebase Console (https://console.firebase.google.com/):
 1. Clone the repository and install dependencies:
 
     ```bash
-    git clone https://github.com/your-repo/webapp-clean-architecture
+    git clone https://github.com/AlessandroDeFrancesco/CleanArchitectureWebApp.git
     cd webapp-clean-architecture
     npm install
     ````
