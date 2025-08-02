@@ -25,7 +25,8 @@ class MultiLevelCache implements Cache {
     set<T>(key: string, value: T): boolean {
         let success = false;
         for (const level of this.cacheLevels) {
-            success = success || level.set(key, value);
+            const result = level.set(key, value);
+            success = success || result;
         }
         return success;
     }
@@ -33,7 +34,8 @@ class MultiLevelCache implements Cache {
     delete(key: string): boolean {
         let success = false;
         for (const level of this.cacheLevels) {
-            success = success || level.delete(key);
+            const result = level.delete(key);
+            success = success || result;
         }
         return success;
     }

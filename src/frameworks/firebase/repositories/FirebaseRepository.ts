@@ -4,6 +4,7 @@ import { createError, createResult, isError, type Result } from "../../../utils/
 import type { CreateType, RepositoryResource, UpdateType } from "../../../application/services/repositories/RepositoryService";
 import type { AuthService } from "../../../application/services/AuthService";
 import type { Cache } from "../../cache/Cache";
+import { Logger } from "../../../utils/Logger";
 
 export abstract class FirebaseRepository<T extends RepositoryResource> {
     protected readonly auth: AuthService;
@@ -51,6 +52,7 @@ export abstract class FirebaseRepository<T extends RepositoryResource> {
             const cacheKey = await this.getCacheKey(id);
             const cached = this.cache.get<T>(cacheKey);
             if (cached !== null) {
+                Logger.log(`Using cached object for '${id}' in '${this.getCollectionPath()}'`);
                 return createResult(cached);
             }
 
