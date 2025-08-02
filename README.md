@@ -174,7 +174,9 @@ firebase deploy
 
 ---
 
-## ⚠️ Disclaimer: Firestore Usage Limitations
+## ⚠️ Disclaimers
+
+### Firestore Usage Limitations
 
 > **Important:** This project uses Firebase Firestore directly from the client. While convenient, this approach is only suitable for **personal projects**, **prototypes**, or **applications with trusted users**.
 
@@ -198,6 +200,21 @@ For **production-grade applications**, a proper backend should be used (e.g., wi
 
 **Do not rely on client-only Firestore for any application where data integrity, cost control, or abuse prevention is important.**
 Use a real backend when you need proper control.
+
+---
+
+### Firestore Files Usage
+
+> **Important:** **User files are stored directly in Firestore documents** (as base64-encoded strings) instead of using Firebase Storage.
+This decision is made **purely for convenience** and to keep the project self-contained and easy to clone, run, and understand.
+
+This approach is **not suitable for real applications**:
+
+* Firestore has **strict limits** on document size (1MB max), making it impractical for anything beyond very small files.
+* Storing binary data as base64 **increases storage size** and **slows down performance**.
+* There's **no streaming**, no resumable uploads, and no native file handling support.
+
+In production, user-uploaded files should be handled via **Firebase Storage**, **another object storage service**, or a **custom backend**, with Firestore used only for metadata references (e.g., file name, size, storage path, etc.).
 
 ---
 
